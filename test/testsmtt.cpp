@@ -11,7 +11,7 @@ using std::string;
 
 BOOST_AUTO_TEST_SUITE(testsmttsuite)
 
-BOOST_AUTO_TEST_CASE(shouldNotDetectedDataField)
+BOOST_AUTO_TEST_CASE(shouldNotDetectDataField)
 {
     BOOST_CHECK_EQUAL(false, smtt::has_data_field<void>::value);
     BOOST_CHECK_EQUAL(false, smtt::has_data_field<int>::value);
