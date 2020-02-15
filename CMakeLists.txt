@@ -35,7 +35,7 @@ target_include_directories(
 
 add_executable(
     testsmtt
-        ${StaticMatrixTypeTraits_SOURCE_DIR}/test/testsmtt.cpp
+        ${StaticMatrixTypeTraits_SOURCE_DIR}/test/testmain.cpp
 )
 
 target_link_libraries(
