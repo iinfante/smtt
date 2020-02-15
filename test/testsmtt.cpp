@@ -13,33 +13,37 @@ BOOST_AUTO_TEST_SUITE(testsmttsuite)
 
 BOOST_AUTO_TEST_CASE(shouldNotDetectDataField)
 {
-    BOOST_CHECK_EQUAL(false, smtt::has_data_field<void>::value);
-    BOOST_CHECK_EQUAL(false, smtt::has_data_field<int>::value);
-    BOOST_CHECK_EQUAL(false, smtt::has_data_field<int[]>::value);
+    using smtt::detail::has_data_field;
 
-    BOOST_CHECK_EQUAL(false, smtt::has_data_field<string>::value);
-    BOOST_CHECK_EQUAL(false, smtt::has_data_field<vector<string>>::value);
+    BOOST_CHECK_EQUAL(false, has_data_field<void>::value);
+    BOOST_CHECK_EQUAL(false, has_data_field<int>::value);
+    BOOST_CHECK_EQUAL(false, has_data_field<int[]>::value);
+
+    BOOST_CHECK_EQUAL(false, has_data_field<string>::value);
+    BOOST_CHECK_EQUAL(false, has_data_field<vector<string>>::value);
 
     struct S
     {
         int data;
     };
-    BOOST_CHECK_EQUAL(false, smtt::has_data_field<S>::value);
+    BOOST_CHECK_EQUAL(false, has_data_field<S>::value);
 }
 
 BOOST_AUTO_TEST_CASE(shouldDetectDataField)
 {
+    using smtt::detail::has_data_field;
+
     struct S
     {
         int data[1];
     };
-    BOOST_CHECK_EQUAL(true, smtt::has_data_field<S>::value);
+    BOOST_CHECK_EQUAL(true, has_data_field<S>::value);
 
     struct T
     {
         string data[3];
     };
-    BOOST_CHECK_EQUAL(true, smtt::has_data_field<T>::value);
+    BOOST_CHECK_EQUAL(true, has_data_field<T>::value);
 }
 
 BOOST_AUTO_TEST_SUITE_END()

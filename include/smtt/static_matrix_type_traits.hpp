@@ -6,6 +6,9 @@
 namespace smtt
 {
 
+namespace detail
+{
+
 // Primary template as default for all types.
 template <typename T, typename = void>
 struct has_data_field : std::false_type
@@ -22,6 +25,8 @@ struct has_data_field<
     > : std::true_type
 {
 };
+
+}
 
 }
 
