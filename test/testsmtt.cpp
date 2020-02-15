@@ -25,7 +25,21 @@ BOOST_AUTO_TEST_CASE(shouldNotDetectDataField)
         int data;
     };
     BOOST_CHECK_EQUAL(false, smtt::has_data_field<S>::value);
+}
 
+BOOST_AUTO_TEST_CASE(shouldDetectDataField)
+{
+    struct S
+    {
+        int data[1];
+    };
+    BOOST_CHECK_EQUAL(true, smtt::has_data_field<S>::value);
+
+    struct T
+    {
+        string data[3];
+    };
+    BOOST_CHECK_EQUAL(true, smtt::has_data_field<T>::value);
 }
 
 BOOST_AUTO_TEST_SUITE_END()

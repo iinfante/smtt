@@ -12,6 +12,17 @@ struct has_data_field : std::false_type
 {
 };
 
+// Partial specialization for types that has a public array named data.
+template <typename T>
+struct has_data_field<
+        T,
+        typename std::enable_if<
+                std::is_array<decltype(T::data)>::value
+            >::type
+    > : std::true_type
+{
+};
+
 }
 
 #endif
