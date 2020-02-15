@@ -30,7 +30,7 @@ add_library(
 target_include_directories(
     smtt
     PUBLIC
-        ${StaticMatrixTypeTraits_SOURCE_DIR}/include}
+        ${StaticMatrixTypeTraits_SOURCE_DIR}/include
 )
 
 add_executable(
