@@ -26,6 +26,12 @@ struct has_data_field<
 {
 };
 
+// Primary template as default for all types.
+template <typename T, typename = void>
+struct has_size_field : std::false_type
+{
+};
+
 }
 
 }
