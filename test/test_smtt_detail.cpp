@@ -10,18 +10,18 @@ using smtt::detail::has_size_field;
 using std::string;
 using std::vector;
 
-BOOST_AUTO_TEST_SUITE(testsmttsuite)
+BOOST_AUTO_TEST_SUITE(test_smtt_suite)
 
-BOOST_AUTO_TEST_SUITE(testsmttdetail)
+BOOST_AUTO_TEST_SUITE(test_smtt_detail)
 
-BOOST_AUTO_TEST_CASE(shouldNotDetectDataFieldForPrimitiveTypes)
+BOOST_AUTO_TEST_CASE(should_not_detect_data_field_for_primitive_types)
 {
     BOOST_CHECK_EQUAL(false, has_data_field<void>::value);
     BOOST_CHECK_EQUAL(false, has_data_field<int>::value);
     BOOST_CHECK_EQUAL(false, has_data_field<int[]>::value);
 }
 
-BOOST_AUTO_TEST_CASE(shouldNotDetectedDataFieldForNonPrimitiveTypes)
+BOOST_AUTO_TEST_CASE(should_not_detect_data_field_for_non_primitive_types)
 {
     BOOST_CHECK_EQUAL(false, has_data_field<string>::value);
     BOOST_CHECK_EQUAL(false, has_data_field<vector<string>>::value);
@@ -33,14 +33,14 @@ BOOST_AUTO_TEST_CASE(shouldNotDetectedDataFieldForNonPrimitiveTypes)
     BOOST_CHECK_EQUAL(false, has_data_field<S>::value);
 }
 
-BOOST_AUTO_TEST_CASE(shouldNotDetectSizeFieldForPrimitiveTypes)
+BOOST_AUTO_TEST_CASE(should_not_detect_size_field_for_primitive_types)
 {
     BOOST_CHECK_EQUAL(false, has_size_field<void>::value);
     BOOST_CHECK_EQUAL(false, has_size_field<int>::value);
     BOOST_CHECK_EQUAL(false, has_size_field<int[]>::value);
 }
 
-BOOST_AUTO_TEST_CASE(shouldNotDetectSizeFieldForNonPrimitiveTypes)
+BOOST_AUTO_TEST_CASE(should_not_detect_size_field_for_non_primitive_types)
 {
     BOOST_CHECK_EQUAL(false, has_size_field<string>::value);
     BOOST_CHECK_EQUAL(false, has_size_field<vector<string>>::value);
@@ -52,7 +52,7 @@ BOOST_AUTO_TEST_CASE(shouldNotDetectSizeFieldForNonPrimitiveTypes)
     BOOST_CHECK_EQUAL(false, has_size_field<S>::value);
 }
 
-BOOST_AUTO_TEST_CASE(shouldDetectDataFieldForStructuresWithRequiredField)
+BOOST_AUTO_TEST_CASE(should_detect_data_field_for_structures_with_required_field)
 {
     struct S
     {
@@ -68,7 +68,7 @@ BOOST_AUTO_TEST_CASE(shouldDetectDataFieldForStructuresWithRequiredField)
 }
 
 
-BOOST_AUTO_TEST_CASE(shouldDetectSizeFieldForStructuresWithRequiredField)
+BOOST_AUTO_TEST_CASE(should_detect_size_field_for_structures_with_required_field)
 {
     struct S
     {

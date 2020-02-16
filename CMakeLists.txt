@@ -34,14 +34,14 @@ target_include_directories(
 )
 
 add_executable(
-    testsmtt
-        ${StaticMatrixTypeTraits_SOURCE_DIR}/test/testmain.cpp
-        ${StaticMatrixTypeTraits_SOURCE_DIR}/test/testsmttdetail.cpp
-        ${StaticMatrixTypeTraits_SOURCE_DIR}/test/testsmtt.cpp
+    test_smtt
+        ${StaticMatrixTypeTraits_SOURCE_DIR}/test/test_main.cpp
+        ${StaticMatrixTypeTraits_SOURCE_DIR}/test/test_smtt_detail.cpp
+        ${StaticMatrixTypeTraits_SOURCE_DIR}/test/test_smtt.cpp
 )
 
 target_link_libraries(
-    testsmtt
+    test_smtt
     PRIVATE
         smtt
         Boost::unit_test_framework
@@ -51,14 +51,14 @@ enable_testing()
 
 add_test(
     NAME
-        testsmttdetail
+        test_smtt_detail
     COMMAND
-        testsmtt --run_test=testsmttsuite/testsmttdetail --report_level=short
+        test_smtt --run_test=test_smtt_suite/test_smtt_detail --report_level=short
 )
 
 add_test(
     NAME
-        testsmtt
+        test_smtt
     COMMAND
-        testsmtt --run_test=testsmttsuite/testsmtt --report_level=short
+        test_smtt --run_test=test_smtt_suite/test_smtt --report_level=short
 )
