@@ -5,11 +5,12 @@
 #include <vector>
 #include <string>
 
-
 using std::vector;
 using std::string;
 
 BOOST_AUTO_TEST_SUITE(testsmttsuite)
+
+BOOST_AUTO_TEST_SUITE(testsmttdetail)
 
 BOOST_AUTO_TEST_CASE(shouldNotDetectDataField)
 {
@@ -80,5 +81,7 @@ BOOST_AUTO_TEST_CASE(shouldDetectSizeField)
     };
     BOOST_CHECK_EQUAL(true, has_size_field<T>::value);
 }
+
+BOOST_AUTO_TEST_SUITE_END()
 
 BOOST_AUTO_TEST_SUITE_END()
