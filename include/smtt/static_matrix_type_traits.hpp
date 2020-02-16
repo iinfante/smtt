@@ -32,6 +32,17 @@ struct has_size_field : std::false_type
 {
 };
 
+// Partial specialization for types that have a public array named size.
+template <typename T>
+struct has_size_field<
+        T,
+        typename std::enable_if<
+                std::is_array<decltype(T::size)>::value
+            >::type
+    > : std::true_type
+{
+};
+
 }
 
 }

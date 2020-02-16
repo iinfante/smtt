@@ -64,4 +64,21 @@ BOOST_AUTO_TEST_CASE(shouldNotDetectSizeField)
     BOOST_CHECK_EQUAL(false, has_size_field<S>::value);
 }
 
+BOOST_AUTO_TEST_CASE(shouldDetectSizeField)
+{
+    using smtt::detail::has_size_field;
+
+    struct S
+    {
+        int size[1];
+    };
+    BOOST_CHECK_EQUAL(true, has_size_field<S>::value);
+
+    struct T
+    {
+        string size[3];
+    };
+    BOOST_CHECK_EQUAL(true, has_size_field<T>::value);
+}
+
 BOOST_AUTO_TEST_SUITE_END()
