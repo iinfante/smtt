@@ -51,6 +51,18 @@ struct is_static_matrix : std::false_type
 {
 };
 
+// Partial specialization for types that have array fields named data and size.
+template <typename T>
+struct is_static_matrix<
+        T,
+        typename std::enable_if<
+                smtt::detail::has_data_field<T>::value &&
+                smtt::detail::has_size_field<T>::value
+            >::type
+    > : std::true_type
+{
+};
+
 }
 
 #endif

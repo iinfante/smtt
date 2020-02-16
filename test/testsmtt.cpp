@@ -52,6 +52,16 @@ BOOST_AUTO_TEST_CASE(shouldNotDetectMatrixForStructuresMissingRequiredFields)
     BOOST_CHECK_EQUAL(false, is_static_matrix<U>::value);
 }
 
+BOOST_AUTO_TEST_CASE(shouldDetectMatrixForStructuresWithRequiredFields)
+{
+    struct T
+    {
+        int data[6];
+        int size[2];
+    };
+    BOOST_CHECK_EQUAL(true, is_static_matrix<T>::value);
+}
+
 BOOST_AUTO_TEST_SUITE_END()
 
 BOOST_AUTO_TEST_SUITE_END()
