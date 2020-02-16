@@ -45,6 +45,12 @@ struct has_size_field<
 
 }
 
+// Primary template as default for all types.
+template <typename T, typename = void>
+struct is_static_matrix : std::false_type
+{
+};
+
 }
 
 #endif
