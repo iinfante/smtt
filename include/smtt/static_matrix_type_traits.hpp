@@ -15,7 +15,7 @@ struct has_data_field : std::false_type
 {
 };
 
-// Partial specialization for types that has a public array named data.
+// Partial specialization for types that have a public array named data.
 template <typename T>
 struct has_data_field<
         T,
