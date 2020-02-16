@@ -53,7 +53,7 @@ add_test(
     NAME
         testsmttdetail
     COMMAND
-        testsmtt --run_test=testsmttsuite/testsmttdetail
+        testsmtt --run_test=testsmttsuite/testsmttdetail --report_level=short
 )
 
 add_test(
