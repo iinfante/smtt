@@ -70,6 +70,19 @@ struct is_static_matrix_ndim : std::false_type
 {
 };
 
+// Partial specialization for static matrix with N dimensions.
+template <typename T, size_t N>
+struct is_static_matrix_ndim<
+        T,
+        N,
+        typename std::enable_if<
+                is_static_matrix<T>::value &&
+                std::extent<decltype(T::size)>::value == N
+            >::type
+    > : std::true_type
+{
+};
+
 }
 
 #endif

@@ -36,6 +36,78 @@ BOOST_AUTO_TEST_CASE(should_not_detect_dimension_for_non_static_matrix)
     BOOST_CHECK_EQUAL(false, (is_static_matrix_ndim<T, 1>::value));
 }
 
+BOOST_AUTO_TEST_CASE(should_detect_only_static_matrix_with_size_1_as_one_dimension)
+{
+    struct S
+    {
+        int data[10];
+        int size[1];
+    };
+    BOOST_CHECK_EQUAL(true, (is_static_matrix_ndim<S, 1>::value));
+
+    struct T
+    {
+        int data[10];
+        int size[2];
+    };
+    BOOST_CHECK_EQUAL(false, (is_static_matrix_ndim<T, 1>::value));
+
+    struct U
+    {
+        int data[10];
+        int size[3];
+    };
+    BOOST_CHECK_EQUAL(false, (is_static_matrix_ndim<U, 1>::value));
+}
+
+BOOST_AUTO_TEST_CASE(should_detect_only_static_matrix_with_size_2_as_two_dimensions)
+{
+    struct S
+    {
+        int data[10];
+        int size[1];
+    };
+    BOOST_CHECK_EQUAL(false, (is_static_matrix_ndim<S, 2>::value));
+
+    struct T
+    {
+        int data[10];
+        int size[2];
+    };
+    BOOST_CHECK_EQUAL(true, (is_static_matrix_ndim<T, 2>::value));
+
+    struct U
+    {
+        int data[10];
+        int size[3];
+    };
+    BOOST_CHECK_EQUAL(false, (is_static_matrix_ndim<U, 2>::value));
+}
+
+BOOST_AUTO_TEST_CASE(should_detect_only_static_matrix_with_size_3_as_three_dimensions)
+{
+    struct S
+    {
+        int data[10];
+        int size[1];
+    };
+    BOOST_CHECK_EQUAL(false, (is_static_matrix_ndim<S, 3>::value));
+
+    struct T
+    {
+        int data[10];
+        int size[2];
+    };
+    BOOST_CHECK_EQUAL(false, (is_static_matrix_ndim<T, 3>::value));
+
+    struct U
+    {
+        int data[10];
+        int size[3];
+    };
+    BOOST_CHECK_EQUAL(true, (is_static_matrix_ndim<U, 3>::value));
+}
+
 BOOST_AUTO_TEST_SUITE_END()
 
 BOOST_AUTO_TEST_SUITE_END()
