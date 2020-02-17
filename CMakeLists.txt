@@ -34,6 +34,17 @@ target_include_directories(
 )
 
 add_executable(
+    smtt_demo
+        ${StaticMatrixTypeTraits_SOURCE_DIR}/src/smtt_demo.cpp
+)
+
+target_link_libraries(
+    smtt_demo
+    PRIVATE
+        smtt
+)
+
+add_executable(
     test_smtt
         ${StaticMatrixTypeTraits_SOURCE_DIR}/test/test_main.cpp
         ${StaticMatrixTypeTraits_SOURCE_DIR}/test/test_smtt_detail.cpp
