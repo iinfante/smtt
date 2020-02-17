@@ -38,6 +38,7 @@ add_executable(
         ${StaticMatrixTypeTraits_SOURCE_DIR}/test/test_main.cpp
         ${StaticMatrixTypeTraits_SOURCE_DIR}/test/test_smtt_detail.cpp
         ${StaticMatrixTypeTraits_SOURCE_DIR}/test/test_smtt.cpp
+        ${StaticMatrixTypeTraits_SOURCE_DIR}/test/test_smtt_dimension.cpp
 )
 
 target_link_libraries(
@@ -61,4 +62,11 @@ add_test(
         test_smtt
     COMMAND
         test_smtt --run_test=test_smtt_suite/test_smtt --report_level=short
+)
+
+add_test(
+    NAME
+        test_smtt_dimension
+    COMMAND
+        test_smtt --run_test=test_smtt_suite/test_smtt_dimension --report_level=short
 )

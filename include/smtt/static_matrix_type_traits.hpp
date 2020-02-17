@@ -2,6 +2,7 @@
 #define SMTT_STATIC_MATRIX_TYPE_TRAITS_HPP
 
 #include <type_traits>
+#include <cstddef>
 
 namespace smtt
 {
@@ -60,6 +61,12 @@ struct is_static_matrix<
                 smtt::detail::has_size_field<T>::value
             >::type
     > : std::true_type
+{
+};
+
+// Primary template as default for all types.
+template <typename T, size_t N, typename = void>
+struct is_static_matrix_ndim : std::false_type
 {
 };
 
